@@ -49,7 +49,7 @@ module.exports = function(app, passport) {
 	// we will use route middleware to verify this (the isLoggedIn function)
 	app.get('/profile', isLoggedIn, function(req, res) {
 		res.render('profile.html', {
-			user : req.user // get the user out of session and pass to template
+			user : req.user // passes object-----ref user----get the user out of session and pass to template
 		});
 	});
 
@@ -60,6 +60,7 @@ module.exports = function(app, passport) {
 		req.logout();
 		res.redirect('/');
 	});
+
 };
 
 // route middleware to make sure
@@ -72,3 +73,4 @@ function isLoggedIn(req, res, next) {
 	// if they aren't redirect them to the home page
 	res.redirect('/');
 }
+

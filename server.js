@@ -9,6 +9,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
 var configDB = require('./config/database.js');
+var Course = require('./app/models/course.js');
 
 // configuration ===============================================================
 mongoose.connect(configDB.url); // connect to our database
@@ -36,7 +37,25 @@ app.configure(function() {
 
 // routes ======================================================================
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
-
+	// POST
+app.post('/course', function(req, res, next) {
+    console.log(req.body); 
+    thiscourse = new Course(req.body);
+    thiscourse.save(function (err){
+        if (err){
+            res.send(err);
+        }
+    })
+});
+// GET
+app.get('/course', function(req, res, next) {
+    console.log(req.body)
+    Course.find(function (err, docs) {
+        if(err)
+        res.send(err)
+        res.json(docs)
+    })
+})
 // launch ======================================================================
 app.listen(port);
-console.log('The magic happens on port ' + port);
+console.log('Running on port ' + port);
