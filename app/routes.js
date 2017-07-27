@@ -5,7 +5,7 @@ module.exports = function(app, passport) {
 	// HOME PAGE (with login links) ========
 	// =====================================
 	app.get('/', function(req, res) {
-		res.render('index.html'); // load the index.ejs file
+		res.render('index.html'); // load the index.html file
 	});
 
 	// =====================================
@@ -48,6 +48,7 @@ module.exports = function(app, passport) {
 	// we will want this protected so you have to be logged in to visit
 	// we will use route middleware to verify this (the isLoggedIn function)
 	app.get('/profile', isLoggedIn, function(req, res) {
+		console.log("here");
 		res.render('profile.html', {
 			user : req.user // passes object-----ref user----get the user out of session and pass to template
 		});

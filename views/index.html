@@ -16,7 +16,7 @@
     <!--EMAIL INPUT-->
     <form action="/login" method="post">
     <div class="signup">
-        <h1>Index</h1>
+        <h1>Login</h1>
         <label for="user-email">Email</label>
         <input type="email" placeholder=" " name="email" id="user-email" required/>
         
@@ -33,5 +33,11 @@
         </div>
         </form>
     </div>
+    <script>
+        if(document.location.search=='?fail'){
+            alert("Incorrect Email or Password")
+        }
+        
+        </script>
 </body>
 </html>

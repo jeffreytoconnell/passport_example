@@ -30,7 +30,7 @@ var courseSchema = mongoose.Schema({
         type: String,
         required: false
     },
-    loggedInAs: String
+    user: String
 
 });
 

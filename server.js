@@ -56,6 +56,20 @@ app.get('/course', function(req, res, next) {
         res.json(docs)
     })
 })
+
+// DELETE
+app.delete('/course/:id', (req, res) => {
+    console.log(req.params);
+    Course.findByIdAndRemove(req.params.id, function(err, docs){
+        if(err)
+        res.send(err)
+        
+    });
+    console.log('Deleted', req.params.id);
+    res.json({Message: "Item Deleted"})
+    
+});
+
 // launch ======================================================================
 app.listen(port);
 console.log('Running on port ' + port);
